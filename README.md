@@ -30,16 +30,16 @@ A comprehensive web application for heart disease risk assessment and management
 
 1. Clone the repository:
    \`\`\`bash
-   git clone https://github.com/yourusername/heart-disease-detection.git
-   cd heart-disease-detection
+   git clone https://github.com/VPPranav/Heart-Disease-Detection-Using-ML.git
+   cd Heart-Disease-Detection-Using-ML
    \`\`\`
 
-2. Create a virtual environment:
+3. Create a virtual environment:
    \`\`\`bash
    python -m venv venv
    \`\`\`
 
-3. Activate the virtual environment:
+4. Activate the virtual environment:
    - On Windows:
      \`\`\`bash
      venv\Scripts\activate
@@ -49,12 +49,12 @@ A comprehensive web application for heart disease risk assessment and management
      source venv/bin/activate
      \`\`\`
 
-4. Install the required packages:
+5. Install the required packages:
    \`\`\`bash
    pip install -r requirements.txt
    \`\`\`
 
-5. Make sure you have the heart disease model file:
+6. Make sure you have the heart disease model file:
    - The application expects a file named `heart_disease_model.pkl` in the root directory
    - If you don't have this file, you can train your own model using the provided Jupyter notebook in the `model` directory
 
