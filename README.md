@@ -81,31 +81,51 @@ A comprehensive web application for heart disease risk assessment and management
    - Explore health insights
    - Browse educational resources
 
-## Project Structure
+Here’s the folder structure from your project, formatted neatly in Markdown for your `README.md`:
 
-\`\`\`
-heart-disease-detection/
-├── app.py                  # Main Flask application
-├── heart_disease_model.pkl # Trained machine learning model
-├── requirements.txt        # Python dependencies
-├── predictions/            # Directory for storing prediction data
-├── ui/
-|    └── chart.js           # For the Chart to be generated 
-├── static/                 # Static files (CSS, JS, images)
+---
+
+Here’s the updated project directory structure (from your latest screenshot), formatted in Markdown for your `README.md`:
+
+---
+
+### 📁 Project Directory Structure
+
+```plaintext
+├── dataset/
+│   └── heart_disease_data.csv          # Dataset file
+│
+├── notebook/
+│   └── heart_disease_detection.ipynb   # Jupyter notebook for model development
+│
+├── predictions/                        # Folder to store prediction results
+│
+├── static/                             # Static frontend files
 │   ├── css/
-│   │   └── style.css       # Main stylesheet
+│   │   └── style.css                   # Custom CSS styling
 │   └── js/
-│       └── script.js       # JavaScript functionality
-└── templates/              # HTML templates
-    ├── dashboard.html      # Dashboard page
-    ├── history.html        # Prediction history page
-    ├── index.html          # Prediction page
-    ├── insights.html       # Health insights page
-    ├── login.html          # Login page
-    ├── profile.html        # User profile page
-    ├── videos.html         # Educational videos related to Heart Health
-    └── lifestyle.html      # Life Style Tips
-\`\`\`
+│       └── script.js                   # JavaScript for frontend interactions
+│
+├── templates/                          # HTML templates for Flask views
+│   ├── dashboard.html
+│   ├── history.html
+│   ├── index.html
+│   ├── insights.html
+│   ├── lifestyle.html
+│   ├── login.html
+│   ├── profile.html
+│   └── videos.html
+│
+├── ui/
+│   └── chart.js                        # JavaScript for data visualizations
+│
+├── app.py                              # Flask application entry point
+├── heart_disease_model.pkl             # Trained machine learning model
+├── README.md                           # Project README file
+├── requirements.txt                    # Python dependencies
+```
+
+---
 
 ## Machine Learning Model
 
