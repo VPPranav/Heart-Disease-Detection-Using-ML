@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Heart Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>Heart Disease Detection</span>
+            </div>
+            <div class="nav-user">
+                <span>Welcome, {{ session['user'] }}</span>
+                <a href="/logout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h1>Welcome to Your Dashboard</h1>
+                <p>Monitor your heart health and make predictions</p>
+            </div>
+            
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Heart Disease Prediction</h3>
+                        <p>Check your risk of heart disease based on health parameters</p>
+                        <a href="/predict-page" class="btn btn-primary">
+                            <i class="fas fa-stethoscope"></i> Make Prediction
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Prediction History</h3>
+                        <p>View your previous heart disease risk assessments</p>
+                        <a href="/history" class="btn btn-primary">
+                            <i class="fas fa-clock"></i> View History
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Health Profile</h3>
+                        <p>Manage your health information and parameters</p>
+                        <a href="/profile" class="btn btn-primary">
+                            <i class="fas fa-id-card"></i> View Profile
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Health Insights</h3>
+                        <p>Get insights about heart disease risk factors</p>
+                        <a href="/insights" class="btn btn-primary">
+                            <i class="fas fa-lightbulb"></i> View Insights
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Educational Videos</h3>
+                        <p>Watch informative videos about heart health and prevention</p>
+                        <a href="/videos" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Watch Videos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Lifestyle Tips</h3>
+                        <p>Get practical advice for maintaining a heart-healthy lifestyle</p>
+                        <a href="/lifestyle" class="btn btn-primary">
+                            <i class="fas fa-lightbulb"></i> View Tips
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Heart Disease Detection System.Developed By Pranav V P All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

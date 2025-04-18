@@ -1,0 +1,21 @@
+{
+    "id": "pranav_20250418175328",
+    "user": "pranav",
+    "date": "2025-04-18 17:53:28",
+    "result": "Low Risk",
+    "features": {
+        "age": "23",
+        "sex": "1",
+        "cp": "0",
+        "trestbps": "81",
+        "chol": "100",
+        "fbs": "1",
+        "restecg": "1",
+        "thalach": "82",
+        "exang": "1",
+        "oldpeak": "3.1",
+        "slope": "0",
+        "ca": "2",
+        "thal": "1"
+    }
+}

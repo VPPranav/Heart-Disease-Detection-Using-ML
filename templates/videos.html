@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Health Videos - Heart Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>Heart Disease Detection</span>
+            </div>
+            <div class="nav-links">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="/predict-page" class="nav-link">
+                    <i class="fas fa-stethoscope"></i> Prediction
+                </a>
+                <a href="/history" class="nav-link">
+                    <i class="fas fa-history"></i> History
+                </a>
+                <a href="/videos" class="nav-link active">
+                    <i class="fas fa-video"></i> Videos
+                </a>
+                <a href="/lifestyle" class="nav-link">
+                    <i class="fas fa-heart"></i> Lifestyle
+                </a>
+            </div>
+            <div class="nav-user">
+                <span>Welcome, {{ session['user'] }}</span>
+                <a href="/logout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="videos-container">
+                <div class="videos-header">
+                    <h1>Heart Health Educational Videos</h1>
+                    <p>Watch these informative videos to learn more about heart health and prevention</p>
+                </div>
+                
+                <div class="videos-categories">
+                    <button class="category-btn active" data-category="all">All Videos</button>
+                    <button class="category-btn" data-category="prevention">Prevention</button>
+                    <button class="category-btn" data-category="diet">Diet & Nutrition</button>
+                    <button class="category-btn" data-category="exercise">Exercise</button>
+                    <button class="category-btn" data-category="medical">Medical Information</button>
+                </div>
+                
+                <div class="videos-grid">
+                    <!-- Video 1 -->
+                    <div class="video-card" data-category="prevention">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/mXKYCqdTzTE" title="Understanding Heart Disease" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Understanding Heart Disease: Causes and Prevention</h3>
+                            <p>Learn about the common causes of heart disease and effective prevention strategies from medical experts.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Prevention</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 8:45</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 -->
+                    <div class="video-card" data-category="diet">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/kk6BrqPV3b0" title="Heart-Healthy Diet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Heart-Healthy Diet: Foods to Eat and Avoid</h3>
+                            <p>Discover the best foods for heart health and which ones to limit or avoid to maintain a healthy cardiovascular system.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Diet & Nutrition</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 12:20</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 -->
+                    <div class="video-card" data-category="exercise">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/gNUq_rCtbxQ" title="Exercises for Heart Health" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Best Exercises for Heart Health</h3>
+                            <p>Learn about the most effective exercises to strengthen your heart and improve cardiovascular health.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Exercise</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 15:30</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 -->
+                    <div class="video-card" data-category="medical">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/t7wmPWTnDbE" title="Heart Attack Warning Signs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Warning Signs of a Heart Attack</h3>
+                            <p>Recognize the early warning signs of a heart attack and learn when to seek immediate medical attention.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Medical Information</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 7:15</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 5 -->
+                    <div class="video-card" data-category="prevention">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/1QZthtqLxu4" title="Stress and Heart Health" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Stress Management for Heart Health</h3>
+                            <p>Understand the impact of stress on your heart and learn effective stress management techniques.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Prevention</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 10:45</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 6 -->
+                    <div class="video-card" data-category="diet">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/4MCGjGDkau4" title="Mediterranean Diet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>The Mediterranean Diet and Heart Health</h3>
+                            <p>Learn about the benefits of the Mediterranean diet for heart health and how to incorporate it into your lifestyle.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Diet & Nutrition</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 14:10</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 7 -->
+                    <div class="video-card" data-category="medical">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/8uFH_Ak-ORI" title="Cholesterol and Heart Health" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Understanding Cholesterol and Heart Health</h3>
+                            <p>Learn about the different types of cholesterol, how they affect your heart, and ways to maintain healthy cholesterol levels.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Medical Information</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 9:30</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 8 -->
+                    <div class="video-card" data-category="exercise">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/2MvZ_7401aI" title="Heart Rate Zones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Heart Rate Zones for Optimal Cardiovascular Exercise</h3>
+                            <p>Understand how to monitor your heart rate during exercise and how to train in different heart rate zones for maximum cardiovascular benefit.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Exercise</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 11:15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video 9 -->
+                    <div class="video-card" data-category="exercise">
+                        <div class="video-thumbnail">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/TZqOQHdw9wQ" title="Heart Rate Zones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>How to calculate HEART RATE ZONES for RUNNING.. PLUS WHAT EACH ZONE MEANS!</h3>
+                            <p>How to monitor your heart rate zone for running how to train in different heart rate zones for maximum cardiovascular benefit.</p>
+                            <div class="video-meta">
+                                <span class="video-category">Exercise</span>
+                                <span class="video-duration"><i class="fas fa-clock"></i> 11:15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="videos-empty" style="display: none;">
+                    <i class="fas fa-video empty-icon"></i>
+                    <h3>No videos found</h3>
+                    <p>Try selecting a different category</p>
+                    <button class="btn btn-secondary" onclick="resetVideoFilters()">
+                        <i class="fas fa-undo"></i> Show All Videos
+                    </button>
+                </div>
+                
+                <div class="videos-suggestion">
+                    <h3><i class="fas fa-lightbulb"></i> Suggested Videos</h3>
+                    <p>Have a suggestion for a heart health video we should include? Let us know!</p>
+                    <form class="suggestion-form">
+                        <input type="text" placeholder="Video title or URL" required>
+                        <select required>
+                            <option value="" disabled selected>Select category</option>
+                            <option value="prevention">Prevention</option>
+                            <option value="diet">Diet & Nutrition</option>
+                            <option value="exercise">Exercise</option>
+                            <option value="medical">Medical Information</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Submit Suggestion</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Heart Disease Detection System.Developed By Pranav V P All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

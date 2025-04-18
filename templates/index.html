@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction - Heart Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>Heart Disease Detection</span>
+            </div>
+            <div class="nav-links">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </div>
+            <div class="nav-user">
+                <span>Welcome, {{ session['user'] }}</span>
+                <a href="/logout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="prediction-container">
+                <div class="prediction-header">
+                    <h1>Heart Disease Risk Prediction</h1>
+                    <p>Enter your health parameters to check your risk of heart disease</p>
+                </div>
+                
+                {% if prediction_text %}
+                <div class="prediction-result {% if 'High Risk' in prediction_text %}high-risk{% else %}low-risk{% endif %}">
+                    <i class="fas {% if 'High Risk' in prediction_text %}fa-exclamation-triangle{% else %}fa-check-circle{% endif %}"></i>
+                    <h3>{{ prediction_text }}</h3>
+                    {% if 'High Risk' in prediction_text %}
+                    <p>Please consult with a healthcare professional for further evaluation.</p>
+                    {% else %}
+                    <p>Continue maintaining a healthy lifestyle.</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                <div class="prediction-form-container">
+                    <form action="/predict" method="post" id="prediction-form">
+                        <div class="form-grid">
+                            <div class="form-group tooltip-container">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" min="1" max="120" placeholder="Enter your age" required>
+                                <div class="tooltip">Your age in years</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="sex">Sex</label>
+                                <select id="sex" name="sex" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                                <div class="tooltip">Biological sex (1=Male, 0=Female)</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="cp">Chest Pain Type</label>
+                                <select id="cp" name="cp" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Typical Angina</option>
+                                    <option value="1">Atypical Angina</option>
+                                    <option value="2">Non-anginal Pain</option>
+                                    <option value="3">Asymptomatic</option>
+                                </select>
+                                <div class="tooltip">Type of chest pain experienced (0-3)</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="trestbps">Resting Blood Pressure</label>
+                                <input type="number" id="trestbps" name="trestbps" min="80" max="250" placeholder="mm Hg" required>
+                                <div class="tooltip">Resting blood pressure in mm Hg</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="chol">Serum Cholesterol</label>
+                                <input type="number" id="chol" name="chol" min="100" max="600" placeholder="mg/dl" required>
+                                <div class="tooltip">Serum cholesterol in mg/dl</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="fbs">Fasting Blood Sugar</label>
+                                <select id="fbs" name="fbs" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">Yes (>120 mg/dl)</option>
+                                    <option value="0">No (≤120 mg/dl)</option>
+                                </select>
+                                <div class="tooltip">Fasting blood sugar > 120 mg/dl (1=true, 0=false)</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="restecg">Resting ECG</label>
+                                <select id="restecg" name="restecg" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Normal</option>
+                                    <option value="1">ST-T Wave Abnormality</option>
+                                    <option value="2">Left Ventricular Hypertrophy</option>
+                                </select>
+                                <div class="tooltip">Resting electrocardiographic results (0-2)</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="thalach">Max Heart Rate</label>
+                                <input type="number" id="thalach" name="thalach" min="60" max="220" placeholder="BPM" required>
+                                <div class="tooltip">Maximum heart rate achieved in BPM</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="exang">Exercise Induced Angina</label>
+                                <select id="exang" name="exang" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <div class="tooltip">Exercise induced angina (1=yes, 0=no)</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="oldpeak">ST Depression</label>
+                                <input type="number" id="oldpeak" name="oldpeak" min="0" max="10" step="0.1" placeholder="mm" required>
+                                <div class="tooltip">ST depression induced by exercise relative to rest</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="slope">Slope</label>
+                                <select id="slope" name="slope" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Upsloping</option>
+                                    <option value="1">Flat</option>
+                                    <option value="2">Downsloping</option>
+                                </select>
+                                <div class="tooltip">Slope of the peak exercise ST segment</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="ca">Major Vessels</label>
+                                <select id="ca" name="ca" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <div class="tooltip">Number of major vessels colored by fluoroscopy (0-3)</div>
+                            </div>
+                            
+                            <div class="form-group tooltip-container">
+                                <label for="thal">Thalassemia</label>
+                                <select id="thal" name="thal" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Fixed Defect</option>
+                                    <option value="3">Reversible Defect</option>
+                                </select>
+                                <div class="tooltip">Thalassemia blood disorder type</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-heartbeat"></i> Predict Risk
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="prediction-info">
+                    <h3><i class="fas fa-info-circle"></i> About the Prediction</h3>
+                    <p>This prediction is based on a machine learning model trained on heart disease data. The model analyzes various health parameters to estimate your risk of heart disease. This is not a medical diagnosis and should not replace professional medical advice.</p>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Heart Disease Detection System.Developed By Pranav V P All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

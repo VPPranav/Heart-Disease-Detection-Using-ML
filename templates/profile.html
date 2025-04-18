@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Heart Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>Heart Disease Detection</span>
+            </div>
+            <div class="nav-links">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="/predict-page" class="nav-link">
+                    <i class="fas fa-stethoscope"></i> Prediction
+                </a>
+                <a href="/history" class="nav-link">
+                    <i class="fas fa-history"></i> History
+                </a>
+            </div>
+            <div class="nav-user">
+                <span>Welcome, {{ session['user'] }}</span>
+                <a href="/logout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h1>Your Health Profile</h1>
+                    <p>Manage your personal health information</p>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2>{{ session['user'] }}</h2>
+                            <p>Member since: January 2025</p>
+                        </div>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3><i class="fas fa-clipboard-list"></i> Health Information</h3>
+                        <form class="profile-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="profile-age">Age</label>
+                                    <input type="number" id="profile-age" name="age" value="35">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-sex">Sex</label>
+                                    <select id="profile-sex" name="sex">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-height">Height (cm)</label>
+                                    <input type="number" id="profile-height" name="height" value="175">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-weight">Weight (kg)</label>
+                                    <input type="number" id="profile-weight" name="weight" value="70">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-bp">Blood Pressure (mm Hg)</label>
+                                    <input type="text" id="profile-bp" name="bp" value="120/80">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-chol">Cholesterol (mg/dl)</label>
+                                    <input type="number" id="profile-chol" name="chol" value="200">
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3><i class="fas fa-bell"></i> Notification Preferences</h3>
+                        <div class="toggle-list">
+                            <div class="toggle-item">
+                                <span>Email Notifications</span>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="toggle-item">
+                                <span>Health Reminders</span>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="toggle-item">
+                                <span>Risk Alerts</span>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Heart Disease Detection System.Developed By Pranav V P All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

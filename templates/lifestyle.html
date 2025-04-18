@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Healthy Lifestyle - Heart Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>Heart Disease Detection</span>
+            </div>
+            <div class="nav-links">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="/predict-page" class="nav-link">
+                    <i class="fas fa-stethoscope"></i> Prediction
+                </a>
+                <a href="/history" class="nav-link">
+                    <i class="fas fa-history"></i> History
+                </a>
+                <a href="/videos" class="nav-link">
+                    <i class="fas fa-video"></i> Videos
+                </a>
+                <a href="/lifestyle" class="nav-link active">
+                    <i class="fas fa-heart"></i> Lifestyle
+                </a>
+            </div>
+            <div class="nav-user">
+                <span>Welcome, {{ session['user'] }}</span>
+                <a href="/logout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="lifestyle-container">
+                <div class="lifestyle-header">
+                    <h1>Heart Healthy Lifestyle Tips</h1>
+                    <p>Practical advice and tips for maintaining a heart-healthy lifestyle</p>
+                </div>
+                
+                <!-- Diet Section -->
+                <div class="lifestyle-section">
+                    <div class="section-header">
+                        <i class="fas fa-utensils"></i>
+                        <h2>Heart-Healthy Diet</h2>
+                    </div>
+                    <div class="lifestyle-cards">
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-carrot"></i>
+                            </div>
+                            <h3>Eat More Fruits and Vegetables</h3>
+                            <p>Aim for at least 5 servings of fruits and vegetables daily. They're rich in vitamins, minerals, and fiber that help maintain heart health.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Add a fruit or vegetable to every meal and snack throughout the day.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h3>Choose Healthy Proteins</h3>
+                            <p>Opt for lean proteins like fish, poultry, beans, and nuts. Fish high in omega-3 fatty acids, such as salmon, can reduce heart disease risk.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Aim to eat fish at least twice a week and limit red meat to occasional consumption.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-bread-slice"></i>
+                            </div>
+                            <h3>Whole Grains</h3>
+                            <p>Choose whole grains like brown rice, oats, and whole wheat bread instead of refined grains. They provide more nutrients and fiber.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Check food labels for "whole grain" as the first ingredient.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-oil-can"></i>
+                            </div>
+                            <h3>Healthy Fats</h3>
+                            <p>Use olive oil, avocados, and nuts for healthy fats. Limit saturated and trans fats found in fried foods and baked goods.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Replace butter with olive oil when cooking and baking when possible.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Exercise Section -->
+                <div class="lifestyle-section">
+                    <div class="section-header">
+                        <i class="fas fa-running"></i>
+                        <h2>Physical Activity</h2>
+                    </div>
+                    <div class="lifestyle-cards">
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-walking"></i>
+                            </div>
+                            <h3>Regular Aerobic Exercise</h3>
+                            <p>Aim for at least 150 minutes of moderate-intensity aerobic activity or 75 minutes of vigorous activity each week.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Start with a 10-minute walk daily and gradually increase duration and intensity.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <h3>Strength Training</h3>
+                            <p>Include muscle-strengthening activities at least twice a week. This helps maintain muscle mass and supports metabolic health.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Use resistance bands, weights, or bodyweight exercises like push-ups and squats.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-chair"></i>
+                            </div>
+                            <h3>Reduce Sitting Time</h3>
+                            <p>Break up long periods of sitting. Even short movement breaks can help improve circulation and heart health.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Set a timer to stand up and move around for 5 minutes every hour.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Find Activities You Enjoy</h3>
+                            <p>Choose physical activities you enjoy to make exercise a sustainable part of your lifestyle.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Try different activities like dancing, swimming, cycling, or team sports to find what you love.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stress Management Section -->
+                <div class="lifestyle-section">
+                    <div class="section-header">
+                        <i class="fas fa-brain"></i>
+                        <h2>Stress Management</h2>
+                    </div>
+                    <div class="lifestyle-cards">
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h3>Meditation and Mindfulness</h3>
+                            <p>Regular meditation and mindfulness practices can reduce stress and improve heart health.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Start with just 5 minutes of meditation daily and gradually increase the time.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-lungs"></i>
+                            </div>
+                            <h3>Deep Breathing</h3>
+                            <p>Deep breathing exercises can activate the parasympathetic nervous system, reducing stress and lowering blood pressure.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Practice the 4-7-8 technique: Inhale for 4 seconds, hold for 7, exhale for 8.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <h3>Quality Sleep</h3>
+                            <p>Aim for 7-9 hours of quality sleep each night. Poor sleep is linked to increased heart disease risk.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Establish a regular sleep schedule and create a relaxing bedtime routine.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Social Connections</h3>
+                            <p>Maintaining strong social connections can reduce stress and improve overall heart health.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Schedule regular time with friends and family, even if it's just a quick video call.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habits to Avoid Section -->
+                <div class="lifestyle-section">
+                    <div class="section-header">
+                        <i class="fas fa-ban"></i>
+                        <h2>Habits to Avoid</h2>
+                    </div>
+                    <div class="lifestyle-cards">
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-smoking"></i>
+                            </div>
+                            <h3>Quit Smoking</h3>
+                            <p>Smoking damages blood vessels and can lead to heart disease. Quitting smoking is one of the best things you can do for your heart.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Seek support from healthcare providers, quit-smoking programs, or apps designed to help you quit.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-wine-glass-alt"></i>
+                            </div>
+                            <h3>Limit Alcohol</h3>
+                            <p>Excessive alcohol consumption can raise blood pressure and contribute to heart disease. If you drink, do so in moderation.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Limit to one drink per day for women and up to two drinks per day for men.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-cookie"></i>
+                            </div>
+                            <h3>Reduce Added Sugar</h3>
+                            <p>High sugar consumption is linked to obesity, diabetes, and heart disease. Limit foods and beverages with added sugars.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Check food labels for added sugars and choose water or unsweetened beverages instead of sugary drinks.
+                            </div>
+                        </div>
+                        
+                        <div class="lifestyle-card">
+                            <div class="card-icon">
+                                <i class="fas fa-salt-shaker"></i>
+                            </div>
+                            <h3>Limit Sodium</h3>
+                            <p>High sodium intake can increase blood pressure. Aim to consume less than 2,300 mg of sodium per day.</p>
+                            <div class="card-tip">
+                                <strong>Tip:</strong> Use herbs and spices instead of salt to flavor foods, and limit processed foods which are often high in sodium.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lifestyle-tracker">
+                    <h3><i class="fas fa-clipboard-check"></i> Track Your Progress</h3>
+                    <p>Use this simple tracker to monitor your heart-healthy habits. Check off each item you accomplish daily.</p>
+                    <div class="tracker-items">
+                        <div class="tracker-item">
+                            <input type="checkbox" id="track-fruits">
+                            <label for="track-fruits">5+ servings of fruits and vegetables</label>
+                        </div>
+                        <div class="tracker-item">
+                            <input type="checkbox" id="track-water">
+                            <label for="track-water">8+ glasses of water</label>
+                        </div>
+                        <div class="tracker-item">
+                            <input type="checkbox" id="track-exercise">
+                            <label for="track-exercise">30+ minutes of physical activity</label>
+                        </div>
+                        <div class="tracker-item">
+                            <input type="checkbox" id="track-stress">
+                            <label for="track-stress">Stress management practice</label>
+                        </div>
+                        <div class="tracker-item">
+                            <input type="checkbox" id="track-sleep">
+                            <label for="track-sleep">7-9 hours of quality sleep</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="save-tracker">
+                        <i class="fas fa-save"></i> Save Today's Progress
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Heart Disease Detection System.Developed By Pranav V P All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insights - Heart Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>Heart Disease Detection</span>
+            </div>
+            <div class="nav-links">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="/predict-page" class="nav-link">
+                    <i class="fas fa-stethoscope"></i> Prediction
+                </a>
+                <a href="/history" class="nav-link">
+                    <i class="fas fa-history"></i> History
+                </a>
+            </div>
+            <div class="nav-user">
+                <span>Welcome, {{ session['user'] }}</span>
+                <a href="/logout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="insights-container">
+                <div class="insights-header">
+                    <h1>Health Insights</h1>
+                    <p>Learn about heart disease risk factors and prevention</p>
+                </div>
+                
+                <div class="insights-content">
+                    <div class="insights-section">
+                        <h2><i class="fas fa-chart-pie"></i> Risk Factor Analysis</h2>
+                        <div class="chart-container">
+                            <canvas id="riskFactorsChart"></canvas>
+                        </div>
+                        <div class="insights-text">
+                            <p>The chart above shows the relative importance of different factors in predicting heart disease. Age, cholesterol levels, and blood pressure are among the most significant indicators.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="insights-cards">
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Blood Pressure</h3>
+                            <p>High blood pressure forces your heart to work harder to pump blood, which can lead to heart disease over time.</p>
+                            <div class="insight-tip">
+                                <strong>Tip:</strong> Aim for a blood pressure below 120/80 mm Hg.
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-hamburger"></i>
+                            </div>
+                            <h3>Cholesterol</h3>
+                            <p>High cholesterol can lead to plaque buildup in your arteries, increasing your risk of heart disease and stroke.</p>
+                            <div class="insight-tip">
+                                <strong>Tip:</strong> Maintain total cholesterol below 200 mg/dL through diet and exercise.
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h3>Physical Activity</h3>
+                            <p>Regular exercise strengthens your heart and improves circulation, reducing your risk of heart disease.</p>
+                            <div class="insight-tip">
+                                <strong>Tip:</strong> Aim for at least 150 minutes of moderate activity per week.
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-smoking-ban"></i>
+                            </div>
+                            <h3>Smoking</h3>
+                            <p>Smoking damages blood vessels and reduces oxygen in the blood, significantly increasing heart disease risk.</p>
+                            <div class="insight-tip">
+                                <strong>Tip:</strong> Quitting smoking can reduce your heart disease risk by up to 50% within one year.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insights-section">
+                        <h2><i class="fas fa-shield-alt"></i> Prevention Strategies</h2>
+                        <div class="prevention-steps">
+                            <div class="prevention-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Healthy Diet</h4>
+                                    <p>Eat a diet rich in fruits, vegetables, whole grains, and lean proteins. Limit saturated fats, trans fats, sodium, and added sugars.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="prevention-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Regular Exercise</h4>
+                                    <p>Engage in moderate aerobic activity for at least 150 minutes per week, or 75 minutes of vigorous activity.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="prevention-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Manage Stress</h4>
+                                    <p>Practice stress-reduction techniques such as meditation, deep breathing, or yoga to lower your heart disease risk.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="prevention-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Regular Check-ups</h4>
+                                    <p>Visit your healthcare provider regularly to monitor your blood pressure, cholesterol, and other risk factors.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Heart Disease Detection System.Developed By Pranav V P All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Risk factors chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('riskFactorsChart').getContext('2d');
+            const riskFactorsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Age', 'Cholesterol', 'Blood Pressure', 'Smoking', 'Diabetes', 'Physical Inactivity'],
+                    datasets: [{
+                        label: 'Relative Risk Factor Importance',
+                        data: [85, 78, 76, 70, 65, 60],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Importance Score'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
